@@ -1,0 +1,102 @@
+:root {
+    --fonte: 'Ubuntu Mono';
+}
+
+body {
+    font-family: var(--fonte);
+    background-color: #080808;
+    color: #c9c9c9;
+}
+
+input[type=number] {
+    width: 80px;
+    font-size: 24px;
+    border: 1px solid  #1D1D1D;
+    background-color: #39393A;
+    color: #c9c9c9;
+}
+
+label, .plus {
+    font-size: 32px;
+    font-weight: bold;
+    
+}
+
+.div_main {
+    background-color: #1D1D1D;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+.div_propellants_title {
+    display: block;
+}
+
+.propellants_title {
+    display: inline-block;
+}
+
+.help {
+    border: 1px solid #1D1D1D;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.help:hover {
+    background-color: #080808;
+}
+
+.label_fuel {
+    color: #b9712d;
+}
+
+.label_oxidizer {
+    color: #0A81D1;
+}
+
+.form_propellants {
+    text-align: center;
+}
+
+.title {
+    font-size: 48px;
+    font-weight: bold;
+    justify-self: center;
+    text-align: center;
+}
+
+.div_fuel {
+    display: inline-block;
+    background-color: #39393A;
+    border-radius: 10px;
+    padding: 0px 10px 10px 10px;
+}
+
+.div_fuel:hover {
+    border-color: #b9712d;
+}
+
+.div_oxidizer {
+    display: inline-block;
+    background-color: #39393A;
+    border-radius: 10px;
+    padding: 0px 10px 10px 10px;
+}
+
+.plus {
+    display: inline-block;
+    font-size: 32px;
+}
+
+.button {
+    font-size: 24px;
+}
+
+#results {
+    align-items: center;
+    text-align: center;
+}
+.reaction_result {
+    font-size: 48px;
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' type='text/css' media='screen' href='../static/css/style.css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <title>Stoichiometry</title>
+</head>
+<body>
+    <h1 class="title">Stoichiometry</h1>
+    <div class="div_main">
+        <form class="form_propellants" name="form"> 
+            <div class="div_fuel">
+                <div class="div_propellants_title">
+                    <p class="propellants_title">Fuel Composition</p>
+                    <span class="help" title="Example: Ethanol (C2H5OH) > C=2 H=6 O=1 N=0"> ? </span>
+                </div>
+                <label class="label_fuel" for="comb_c">C</label>
+                <input type="number" id="comb_c" name="comb_c" value="0" step="1" min="0" required>
+                <label class="label_fuel" for="comb_h">H</label>
+                <input type="number" id="comb_h" name="comb_h" value="0" step="1" min="0" required>
+                <label class="label_fuel" for="comb_o">O</label>
+                <input type="number" id="comb_o" name="comb_o" value="0" step="1" min="0" required>
+                <label class="label_fuel" for="comb_n">N</label>
+                <input type="number" id="comb_n" name="comb_n" value="0" step="1" min="0" required>
+            </div>
+            <p class="plus">+</p>
+            <div class="div_oxidizer">
+                <div class="div_propellants_title">
+                    <p class="propellants_title">Oxidizer Composition</p>
+                    <span class="help" title="Example: Air (O2+3,76N2) > H=0 O=2 N=7.52"> ? </span>
+                </div>
+                <label class="label_oxidizer" for="oxid_h">H</label>
+                <input type="number" id="oxid_h" name="oxid_h" value="0" step="1" min="0" required>
+                <label class="label_oxidizer"for="oxid_o">O</label>
+                <input type="number" id="oxid_o" name="oxid_o" value="0" step="1" min="0" required>
+                <label class="label_oxidizer"for="oxid_n">N</label>
+                <input type="number" id="oxid_n" name="oxid_n" value="0" step="0.01" min="0.00" required>
+            </div>
+            <button type="submit" class="button" id="calc">=</button>
+        </form>
+
+        <div id="results"></div>
+    </div>
+
+    <script type="text/javascript">
+        (function(uri) {
+            const elem = document.getElementById('results');
+            const form = document.querySelector('form[name="form"]');
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const formData = new FormData(this);
+                fetch(uri, {
+                    method: 'post', 
+                    body: formData
+                }).then(resp => resp.ok && resp.text())
+                  .then(text => { elem.innerHTML = text; });
+            });
+        })({{ url_for('calc') | tojson }});
+    </script>
+</body>
+</html>
